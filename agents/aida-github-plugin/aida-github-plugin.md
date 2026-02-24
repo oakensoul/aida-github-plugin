@@ -45,7 +45,7 @@ This agent is best suited for:
 
 ### Example 1
 
-```
+```text
 User: Example request
 Agent: Example response
 ```

@@ -14,6 +14,9 @@ authors = [
 ]
 keywords = ["github", "devops", "ci-cd", "automation", "releases"]
 
+[tool.setuptools]
+packages = []
+
 [project.optional-dependencies]
 dev = [
     "pytest>=7.0",
