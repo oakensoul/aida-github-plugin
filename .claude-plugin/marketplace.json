@@ -1,0 +1,16 @@
+{
+  "name": "Aida Github Plugin",
+  "owner": {
+    "name": "oakensoul",
+    "email": "github@oakensoul.com"
+  },
+  "description": "AIDA plugin with agents and skills for GitHub operations including CI/CD, releases, and repository management",
+  "plugins": [
+    {
+      "name": "aida-github-plugin",
+      "description": "AIDA plugin with agents and skills for GitHub operations including CI/CD, releases, and repository management",
+      "version": "0.1.0",
+      "source": "./"
+    }
+  ]
+}

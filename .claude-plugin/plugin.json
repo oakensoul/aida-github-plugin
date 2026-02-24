@@ -1,0 +1,12 @@
+{
+  "name": "aida-github-plugin",
+  "description": "AIDA plugin with agents and skills for GitHub operations including CI/CD, releases, and repository management",
+  "version": "0.1.0",
+  "author": {
+    "name": "oakensoul",
+    "email": "github@oakensoul.com"
+  },
+  "license": "AGPL-3.0",
+  "keywords": ["github", "devops", "ci-cd", "automation", "releases"],
+  "repository": ""
+}
