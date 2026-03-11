@@ -115,7 +115,7 @@ gh project item-edit --id ITEM_ID --project-id PROJECT_ID \
 ### 8. Create Project
 
 ```bash
-gh project create --owner @me --title "Q1 Sprint Board" --format json
+gh project create --owner @me --title "Q1 Sprint Board"
 ```
 
 Returns the new project number and URL.
