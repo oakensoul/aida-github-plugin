@@ -22,6 +22,15 @@ View project board status with item counts by field value (e.g., status column).
 
 <!-- SCRIPT: scripts/gh_project.py status — multi-step: get project number, list items, aggregate by status -->
 
+### Recommended
+
+```bash
+python scripts/gh_project.py status <project-number> --owner @me
+python scripts/gh_project.py status <project-number> --owner @me --json
+```
+
+Use `--group-by <field>` to group by a different field (default: Status).
+
 ### Manual Steps
 
 1. Find the project number:
@@ -64,6 +73,15 @@ The URL must be a full GitHub URL like `https://github.com/owner/repo/issues/42`
 Edit a project item's field value (e.g., move between status columns).
 
 <!-- SCRIPT: scripts/gh_project.py edit-field — 4-step process, prime Python script candidate -->
+
+### Recommended
+
+```bash
+python scripts/gh_project.py edit-field <project-number> --owner @me \
+  --item <issue-number> --field "Status" --value "In Progress"
+```
+
+Handles the 4-step ID lookup automatically (project ID → field ID → option ID → item ID).
 
 ### Manual Steps
 

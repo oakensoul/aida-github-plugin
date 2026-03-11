@@ -108,6 +108,45 @@ class TestPluginStructure:
         missing = routing_actions - help_actions
         assert not missing, f"Actions in routing table but missing from help menu: {missing}"
 
+    def test_scripts_directory_structure(self, project_root: Path) -> None:
+        scripts_dir = project_root / "scripts"
+        assert (scripts_dir / "__init__.py").exists(), "scripts/__init__.py is required"
+        assert (scripts_dir / "utils" / "__init__.py").exists(), "scripts/utils/__init__.py is required"
+        expected_utils = ["cli.py", "output.py", "errors.py"]
+        for filename in expected_utils:
+            assert (scripts_dir / "utils" / filename).exists(), f"scripts/utils/{filename} is required"
+
+    def test_script_files_exist(self, project_root: Path) -> None:
+        scripts_dir = project_root / "scripts"
+        expected = [
+            "gh_project.py", "gh_query.py", "gh_label_sync.py",
+            "gh_api.py", "gh_pr_body.py", "gh_release.py",
+        ]
+        for filename in expected:
+            assert (scripts_dir / filename).exists(), f"scripts/{filename} is required"
+
+    def test_script_data_files_exist(self, project_root: Path) -> None:
+        data_dir = project_root / "scripts" / "data"
+        assert (data_dir / "standard_labels.json").exists(), "standard_labels.json is required"
+
+    def test_script_templates_exist(self, project_root: Path) -> None:
+        templates_dir = project_root / "scripts" / "templates"
+        expected = ["pr_default.md.j2", "pr_bugfix.md.j2", "issue_default.md.j2", "issue_bug.md.j2"]
+        for filename in expected:
+            assert (templates_dir / filename).exists(), f"templates/{filename} is required"
+
+    def test_handler_script_markers_reference_existing_scripts(self, project_root: Path) -> None:
+        handlers_dir = project_root / "skills" / "github" / "handlers"
+        for handler_file in sorted(handlers_dir.glob("*.md")):
+            content = handler_file.read_text()
+            for line in content.splitlines():
+                if "<!-- SCRIPT:" in line:
+                    # Extract script path from marker
+                    script_ref = line.split("<!-- SCRIPT:")[1].split("—")[0].strip()
+                    script_path = script_ref.split()[0]  # e.g., "scripts/gh_project.py"
+                    assert (project_root / script_path).exists(), \
+                        f"{handler_file.name} references non-existent script: {script_path}"
+
     def test_adr_files_exist(self, project_root: Path) -> None:
         adr_dir = project_root / "docs" / "architecture" / "adr"
         assert adr_dir.exists(), "ADR directory is required"

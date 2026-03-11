@@ -17,6 +17,16 @@ endpoint.
 
 Create a milestone.
 
+<!-- SCRIPT: scripts/gh_api.py milestone-create — REST API wrapper with correct method + endpoint -->
+
+### Recommended
+
+```bash
+python scripts/gh_api.py milestone-create --title "v2.0" --description "Version 2.0 release" --due-date 2026-06-01
+```
+
+### Manual
+
 ```bash
 gh api repos/{owner}/{repo}/milestones --method POST \
   -f title="v2.0" \
@@ -43,6 +53,17 @@ gh api repos/{owner}/{repo}/milestones --method POST \
 
 List milestones.
 
+<!-- SCRIPT: scripts/gh_api.py milestone-list — REST API wrapper with correct endpoint -->
+
+### Recommended
+
+```bash
+python scripts/gh_api.py milestone-list
+python scripts/gh_api.py milestone-list --state all --json
+```
+
+### Manual
+
 ```bash
 # Open milestones
 gh api repos/{owner}/{repo}/milestones --jq '.[] | {number, title, state, due_on, open_issues, closed_issues}'
@@ -57,6 +78,16 @@ gh api repos/{owner}/{repo}/milestones --jq '.[] | "\(.title): \(.closed_issues)
 ## close
 
 Close a milestone.
+
+<!-- SCRIPT: scripts/gh_api.py milestone-close — REST API wrapper with correct method -->
+
+### Recommended
+
+```bash
+python scripts/gh_api.py milestone-close <number>
+```
+
+### Manual
 
 ```bash
 gh api repos/{owner}/{repo}/milestones/<number> --method PATCH -f state="closed"
@@ -80,6 +111,17 @@ gh api repos/{owner}/{repo}/milestones/<number> --method PATCH -f state="closed"
 
 Edit a milestone's title, description, or due date.
 
+<!-- SCRIPT: scripts/gh_api.py milestone-edit — REST API wrapper with correct method + endpoint -->
+
+### Recommended
+
+```bash
+python scripts/gh_api.py milestone-edit <number> --due-date 2026-07-01
+python scripts/gh_api.py milestone-edit <number> --description "Updated scope for v2.0"
+```
+
+### Manual
+
 ```bash
 # Update due date
 gh api repos/{owner}/{repo}/milestones/<number> --method PATCH \
@@ -93,6 +135,16 @@ gh api repos/{owner}/{repo}/milestones/<number> --method PATCH \
 ## delete
 
 Delete a milestone.
+
+<!-- SCRIPT: scripts/gh_api.py milestone-delete — REST API wrapper with correct method -->
+
+### Recommended
+
+```bash
+python scripts/gh_api.py milestone-delete <number>
+```
+
+### Manual
 
 ```bash
 gh api repos/{owner}/{repo}/milestones/<number> --method DELETE

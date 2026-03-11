@@ -1,0 +1,23 @@
+## Summary
+
+{{ summary | default("<!-- Describe what this PR does and why -->") }}
+
+## Changes
+
+{{ changes | default("<!-- List key changes -->") }}
+
+## Related Issues
+
+{% if issue %}
+Closes #{{ issue }}
+{% else %}
+<!-- Closes #N -->
+{% endif %}
+
+## Test Plan
+
+{{ test_plan | default("- [ ] Tests pass locally\n- [ ] Linting passes") }}
+
+## Notes
+
+{{ notes | default("<!-- Any additional context -->") }}
