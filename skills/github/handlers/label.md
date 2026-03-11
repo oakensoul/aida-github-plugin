@@ -14,7 +14,16 @@ version: 1.0.0
 
 Synchronize labels to match the project's label taxonomy.
 
-<!-- SCRIPT: scripts/gh_label.py sync — diff current vs taxonomy, create/update/report -->
+<!-- SCRIPT: scripts/gh_label_sync.py sync — diff current vs taxonomy, create/update/report -->
+
+### Recommended
+
+```bash
+python scripts/gh_label_sync.py sync --dry-run    # preview changes
+python scripts/gh_label_sync.py sync              # apply changes
+```
+
+Use `--file path/to/labels.json` for a custom taxonomy. Use `--json` for machine-readable output.
 
 ### From a Source Repo
 

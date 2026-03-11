@@ -1,0 +1,19 @@
+## Bug Fix
+
+**Issue:** {% if issue %}#{{ issue }}{% else %}<!-- #N -->{% endif %}
+
+## Root Cause
+
+{{ root_cause | default("<!-- What caused the bug -->") }}
+
+## Fix
+
+{{ fix | default("<!-- How this PR fixes it -->") }}
+
+## Regression Risk
+
+{{ regression_risk | default("Low — isolated change.") }}
+
+## Test Plan
+
+{{ test_plan | default("- [ ] Reproduced the bug before fix\n- [ ] Verified fix resolves the issue\n- [ ] Tests pass locally") }}

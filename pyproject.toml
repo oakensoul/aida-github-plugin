@@ -13,6 +13,9 @@ authors = [
     { name = "oakensoul", email = "github@oakensoul.com" },
 ]
 keywords = ["github", "devops", "ci-cd", "automation", "releases"]
+dependencies = [
+    "jinja2>=3.1",
+]
 
 [tool.setuptools]
 packages = []
@@ -22,7 +25,6 @@ dev = [
     "pytest>=7.0",
     "pytest-cov>=4.0",
     "ruff>=0.6.0",
-    "jinja2>=3.1",
 ]
 
 [tool.ruff]
@@ -34,6 +36,7 @@ select = ["E", "F", "I", "UP", "B"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = [".", "scripts"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]

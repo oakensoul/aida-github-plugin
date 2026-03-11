@@ -14,7 +14,16 @@ version: 1.0.0
 
 Create a GitHub release with auto-generated notes.
 
-<!-- SCRIPT: scripts/gh_release.py create — multi-step: check latest tag, bump version, tag, push, create release -->
+<!-- SCRIPT: scripts/gh_release.py create — multi-step: check tag, tag, push, create release -->
+
+### Recommended
+
+```bash
+python scripts/gh_release.py create v1.0.0 --generate-notes
+python scripts/gh_release.py create v2.0.0-rc.1 --prerelease --draft
+```
+
+Handles tag creation, push, and release creation in one step. Use `--no-tag` if the tag already exists.
 
 ### Quick Release
 
