@@ -1,22 +1,104 @@
 {
   "generator_version": "0.9.0",
   "config": {
-    "label": "Aida Github Plugin Configuration",
-    "description": "Configure Aida Github Plugin preferences",
+    "label": "GitHub Plugin Configuration",
+    "description": "Configure GitHub workflow preferences for branching, merging, worktrees, and more",
     "preferences": [
       {
         "key": "aida-github-plugin.enabled",
         "type": "boolean",
-        "label": "Enable Aida Github Plugin",
+        "label": "Enable GitHub Plugin",
         "default": true,
         "required": true
+      },
+      {
+        "key": "github.branching_model",
+        "type": "choice",
+        "label": "Branching Model",
+        "options": ["trunk-based", "github-flow", "gitflow", "custom"],
+        "default": "github-flow",
+        "description": "Default branching strategy for new repos and branch operations"
+      },
+      {
+        "key": "github.branch_prefix.feature",
+        "type": "string",
+        "label": "Feature Branch Prefix",
+        "default": "feature/"
+      },
+      {
+        "key": "github.branch_prefix.fix",
+        "type": "string",
+        "label": "Fix Branch Prefix",
+        "default": "fix/"
+      },
+      {
+        "key": "github.branch_prefix.chore",
+        "type": "string",
+        "label": "Chore Branch Prefix",
+        "default": "chore/"
+      },
+      {
+        "key": "github.worktree.enabled",
+        "type": "boolean",
+        "label": "Use Git Worktrees",
+        "default": false,
+        "description": "Create worktrees instead of standard branch checkouts"
+      },
+      {
+        "key": "github.worktree.mode",
+        "type": "choice",
+        "label": "Worktree Mode",
+        "options": ["bare", "traditional"],
+        "default": "bare",
+        "description": "Bare: worktrees as siblings. Traditional: worktrees in .worktrees/ subdirectory"
+      },
+      {
+        "key": "github.merge_strategy",
+        "type": "choice",
+        "label": "Default Merge Strategy",
+        "options": ["squash", "merge", "rebase"],
+        "default": "squash",
+        "description": "Default merge strategy for PRs"
+      },
+      {
+        "key": "github.label_taxonomy",
+        "type": "string",
+        "label": "Label Taxonomy",
+        "default": "standard",
+        "description": "Label set to sync: 'standard' or path to custom label definition"
+      },
+      {
+        "key": "github.pr.default_reviewers",
+        "type": "string",
+        "label": "Default PR Reviewers",
+        "default": "",
+        "description": "Comma-separated list of default reviewers for new PRs"
+      },
+      {
+        "key": "github.pr.auto_link_issues",
+        "type": "boolean",
+        "label": "Auto-link Issues in PRs",
+        "default": true,
+        "description": "Automatically detect and link related issues when creating PRs"
       }
     ]
   },
-  "recommendedPermissions": {},
+  "recommendedPermissions": {
+    "git-operations": {
+      "rules": ["Bash(git:*)"],
+      "suggested": "allow",
+      "description": "Git CLI operations for branching, merging, worktrees, and history"
+    },
+    "github-cli": {
+      "rules": ["Bash(gh:*)"],
+      "suggested": "allow",
+      "description": "GitHub CLI for PRs, issues, releases, projects, and repo management"
+    }
+  },
   "agents": [
-    "aida-github-plugin"
+    "github-expert"
   ],
   "skills": [
+    "github"
   ]
 }
