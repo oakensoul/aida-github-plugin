@@ -124,10 +124,10 @@ automatically in the GitHub UI sidebar.
 
 ```bash
 gh issue comment 42 --body "Reproduced on macOS 15. Stack trace attached."
-
-# Comment using editor (for longer comments)
-gh issue comment 42 --editor
 ```
+
+**Note**: `gh issue comment --editor` opens an interactive editor — Claude cannot use this.
+Always use `--body` for non-interactive execution.
 
 ### 9. Transfer Issue
 

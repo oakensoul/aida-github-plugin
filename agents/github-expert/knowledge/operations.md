@@ -39,7 +39,7 @@ gh pr create --title "Add auth module" --body "Closes #123" \
 
 - Mention `Closes #123` (or `Fixes #123`) in the body to auto-link and auto-close the issue on merge.
 - `--fill` populates title/body from commits. `--fill-first` uses only the first commit.
-- `--template TEMPLATE` uses a PR template file. `--dry-run` previews without creating.
+- `--template TEMPLATE` uses a PR template file.
 - Adding to projects requires the `project` OAuth scope.
 
 ### List
