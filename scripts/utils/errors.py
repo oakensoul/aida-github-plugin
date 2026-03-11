@@ -6,6 +6,11 @@ import subprocess
 import sys
 from typing import NoReturn
 
+from rich.text import Text
+
+from .output import print_error, status_console
+from .style import ICON_INFO
+
 
 class ScriptError(Exception):
     """An error with an actionable hint for the user."""
@@ -48,13 +53,14 @@ def handle_gh_error(exc: subprocess.CalledProcessError) -> ScriptError:
 
 
 def die(error: ScriptError | str, *, code: int = 1) -> NoReturn:
-    """Print an error (and optional hint) to stderr, then exit."""
-    if isinstance(error, ScriptError):
-        print(f"error: {error}", file=sys.stderr)
-        if error.hint:
-            print(f"hint: {error.hint}", file=sys.stderr)
-    else:
-        print(f"error: {error}", file=sys.stderr)
+    """Print an error (and optional hint) to stderr with color, then exit."""
+    print_error(str(error))
+    if isinstance(error, ScriptError) and error.hint:
+        hint_text = Text()
+        hint_text.append(f"{ICON_INFO} ", style="yellow")
+        hint_text.append("hint: ", style="yellow bold")
+        hint_text.append(error.hint)
+        status_console().print(hint_text)
     sys.exit(code)
 
 

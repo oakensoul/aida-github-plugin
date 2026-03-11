@@ -3,6 +3,7 @@
 
 PLUGIN_PATH := $(shell pwd)
 PLUGIN_NAME := aida-github-plugin
+VENV := .venv/bin
 
 .PHONY: help lint lint-md lint-fix-md lint-yaml lint-frontmatter clean
 
@@ -30,19 +31,19 @@ lint-frontmatter: ## Validate frontmatter in Markdown files
 .PHONY: lint-py test format install
 
 lint-py: ## Run ruff linter on Python files
-	ruff check .
+	$(VENV)/ruff check .
 
 lint: lint-py lint-md lint-yaml lint-frontmatter ## Run all linters
 
 test: ## Run pytest
-	pytest tests/ -v
+	$(VENV)/pytest tests/ -v
 
 format: ## Auto-format Python code
-	ruff check . --fix
-	ruff format .
+	$(VENV)/ruff check . --fix
+	$(VENV)/ruff format .
 
 install: ## Install Python dependencies
-	pip install -e ".[dev]"
+	$(VENV)/pip install -e ".[dev]"
 
 clean: ## Remove build artifacts
 	find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
