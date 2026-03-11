@@ -100,11 +100,13 @@ Shown when `/github` is invoked with no arguments:
     /github milestone delete   Delete a milestone
 
   CI/CD & Actions
-    /github actions list     List recent workflow runs
-    /github actions view     View run details and logs
-    /github actions debug    Triage CI failures step by step
-    /github actions rerun    Rerun failed jobs
-    /github actions trigger  Manually trigger a workflow
+    /github actions list       List recent workflow runs
+    /github actions view       View run details and logs
+    /github actions debug      Triage CI failures step by step
+    /github actions rerun      Rerun failed jobs
+    /github actions cancel     Cancel an in-progress run
+    /github actions trigger    Manually trigger a workflow
+    /github actions workflows  List and manage workflows
 
   Repository
     /github repo clone       Clone a repository
@@ -113,11 +115,15 @@ Shown when `/github` is invoked with no arguments:
     /github repo view        View repository info
     /github repo edit        Edit repository settings
     /github repo sync        Sync fork with upstream
+    /github repo archive     Archive a repository
+    /github repo rulesets    View repository rulesets
 
   Search
     /github search issues    Search issues across repos
     /github search prs       Search PRs across repos
     /github search code      Search code across repos
+    /github search commits   Search commits across repos
+    /github search repos     Search for repositories
 
 Run /github <domain> without an action to see all available actions.
 For conceptual questions, ask the github-expert agent

@@ -40,7 +40,7 @@ Search pull requests across repositories.
 gh search prs "feature" --repo owner/repo --state open
 
 # Merged PRs by author
-gh search prs "auth" --repo owner/repo --state merged --author @me
+gh search prs "auth is:merged" --repo owner/repo --author @me
 
 # JSON output
 gh search prs "query" --repo owner/repo --json number,title,state,url

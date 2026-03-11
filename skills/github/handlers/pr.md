@@ -178,12 +178,12 @@ Mark a draft PR as ready for review.
 gh pr ready <#>
 ```
 
-## Reference
-
-See [../references/pr.md](../references/pr.md) for advanced recipes, full JSON field list, and
-linked issue patterns.
-
 ### Guardrails
 
 - **Never** `git push --force` — always use `git push --force-with-lease`.
 - **Never** force-push to `main` or the default branch.
+
+## Reference
+
+See [../references/pr.md](../references/pr.md) for advanced recipes, full JSON field list, and
+linked issue patterns.

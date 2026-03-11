@@ -93,6 +93,21 @@ class TestPluginStructure:
         assert not missing_handlers, f"Routing table references missing handlers: {missing_handlers}"
         assert not missing_routes, f"Handler files missing from routing table: {missing_routes}"
 
+    def test_help_menu_covers_routing_table_actions(self, project_root: Path) -> None:
+        skill_md = project_root / "skills" / "github" / "SKILL.md"
+        content = skill_md.read_text()
+        help_start = content.index("```text")
+        help_end = content.index("```", help_start + 1)
+        help_menu = content[help_start:help_end]
+        help_actions = set(re.findall(r"/github (\w+ \w+)", help_menu))
+        routing_rows = re.findall(r"\| `(\w+)` \|[^|]+\| (`.+`) \|", content)
+        routing_actions = set()
+        for domain, actions_str in routing_rows:
+            for action in re.findall(r"`(\w+)`", actions_str):
+                routing_actions.add(f"{domain} {action}")
+        missing = routing_actions - help_actions
+        assert not missing, f"Actions in routing table but missing from help menu: {missing}"
+
     def test_adr_files_exist(self, project_root: Path) -> None:
         adr_dir = project_root / "docs" / "architecture" / "adr"
         assert adr_dir.exists(), "ADR directory is required"

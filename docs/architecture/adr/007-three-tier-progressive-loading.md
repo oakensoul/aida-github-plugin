@@ -83,7 +83,7 @@ where the hub alone was 308 lines before even reaching reference files.
 
 **Negative**:
 
-- More files to maintain (9 handlers + 9 references vs 1 hub + 9 references)
+- More files to maintain (10 handlers + 9 references vs 1 hub + 9 references)
 - **Mitigation**: Handler files are lean and follow a strict template — maintenance cost is low
 - One more file read per invocation (dispatcher + handler vs hub alone)
 - **Mitigation**: File reads are cheap; the token savings from not loading irrelevant domains

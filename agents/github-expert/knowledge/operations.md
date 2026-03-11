@@ -490,7 +490,7 @@ gh search issues "auth bug" --repo owner/repo --state open --label bug
 gh search code "handleAuth" --repo owner/repo --language python
 
 # Search merged PRs
-gh search prs "refactor" --repo owner/repo --state merged
+gh search prs "refactor is:merged" --repo owner/repo
 
 # Search repos
 gh search repos "cli tool" --language go --stars ">100"

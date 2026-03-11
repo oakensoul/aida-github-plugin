@@ -36,12 +36,12 @@ that Claude cannot use.
 ### With Template
 
 ```bash
-gh issue create --template "bug_report.md"
+gh issue create --template "bug_report.md" --title "<title>" --body "<body>"
 ```
 
-Templates live in `.github/ISSUE_TEMPLATE/`. If templates exist, `gh issue create` with no
-`--template` flag will prompt for selection interactively — prefer specifying the template
-explicitly.
+Templates live in `.github/ISSUE_TEMPLATE/`. Always provide `--title` and `--body` alongside
+`--template` to avoid interactive mode. Without them, `gh issue create` opens an editor that
+Claude cannot use.
 
 ### Guardrails
 
